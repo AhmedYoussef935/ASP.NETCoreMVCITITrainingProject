@@ -1,0 +1,45 @@
+﻿@model User
+
+<div class="d-flex justify-content-center mb-4">
+    <h2 class="text-success display-4 fw-bold">New User</h2>
+</div>
+
+<div class="d-flex justify-content-center">
+    <div class="card p-4 sign-card">
+        <h3 class="card-title text-center text-success fw-bold">Sign Up!</h3>
+        <div class="d-flex fw-bold lead">
+            <p class="text">Have an account?&nbsp;</p>
+            <a asp-controller="User" asp-action="Login" class="link">Log in</a>
+        </div>
+        <form asp-controller="User" asp-action="Create" method="post">
+            <div class="form-group">
+                <label asp-for="Email" class="form-label fw-bold fs-5"></label>
+                <input asp-for="Email" class="form-control">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label asp-for="FirstName" class="form-label fw-bold fs-5"></label>
+                <input asp-for="FirstName" class="form-control">
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label asp-for="LastName" class="form-label fw-bold fs-5"></label>
+                <input asp-for="LastName" class="form-control">
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label asp-for="Password" class="form-label fw-bold fs-5"></label>
+                <input asp-for="Password" class="form-control">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <label asp-for="ConfirmPassword" class="form-label fw-bold fs-5"></label>
+                <input asp-for="ConfirmPassword" class="form-control">
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="d-flex justify-content-center mt-3 gap-5">
+            <input type="submit" value="Sign Up" class="btn btn-success" title="Sign Up">
+            </div>
+        </form>
+    </div>
+</div>

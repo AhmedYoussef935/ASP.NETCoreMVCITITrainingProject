@@ -1,0 +1,18 @@
+﻿@model Category
+
+<div class="d-flex justify-content-center mb-4">
+    <h2 class="text-success display-4 fw-bold">Delete Brand</h2>
+</div>
+
+<form asp-controller="Category" asp-action="Delete" method="post">
+    <input asp-for="CategoryId" value="@Model.CategoryId" hidden>
+    <input asp-for="CategoryName" value="@Model.CategoryName" class="form-control" hidden>
+    <input asp-for="CategoryDescription" value="@Model.CategoryDescription" class="form-control" hidden>
+    <p class="text-danger fs-3 text-center">
+        Are you sure to delete <span class="fw-bold">@Model.CategoryName</span>?
+    </p>
+    <div class="d-flex justify-content-center mt-3 gap-4">
+        <input type="submit" value="Delete" class="btn btn-danger" title="Delete">
+        <a asp-controller="Category" asp-action="Index" class="btn btn-secondary" title="Cancel">Cancel</a>
+    </div>
+</form>

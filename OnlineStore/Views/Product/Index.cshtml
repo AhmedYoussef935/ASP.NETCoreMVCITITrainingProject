@@ -1,0 +1,62 @@
+﻿@model IEnumerable<IGrouping<string, Product>>
+
+<div class="d-flex justify-content-center mb-4">
+    <h2 class="text-success fw-bold display-4">Products Table</h2>
+</div>
+<style>
+    td,th {
+        border: 3px solid #198754;
+    }
+</style>
+
+<table class="table table-hover text-center align-middle fw-bold">
+    <thead>
+        <tr class="fs-3">
+            <th scope="col">@Html.DisplayNameFor(g => g.First().First().ProductId)</th>
+            <th scope="col">@Html.DisplayNameFor(g => g.First().First().Title)</th>
+            <th scope="col">@Html.DisplayNameFor(g => g.First().First().Description)</th>
+            <th scope="col">@Html.DisplayNameFor(g => g.First().First().Price)</th>
+            <th scope="col">@Html.DisplayNameFor(g => g.First().First().Quantity)</th>
+            <th scope="col">@Html.DisplayNameFor(g => g.First().First().ImagePath)</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var group in Model)
+        {
+            <tr class="table-success fs-4">
+                <td colspan="7">@group.Key</td>
+            </tr>
+            @foreach (var item in group)
+            {
+                <tr class="fs-5">
+                    <td scope="row">@item.ProductId</td>
+                    <td scope="row">@item.Title</td>
+                    <td scope="row">@item.Description</td>
+                    <td scope="row">@item.Price&nbsp;<span>$</span></td>
+                    <td scope="row">@item.Quantity</td>
+                    <td><img src=@Url.Content(item.ImagePath) alt="Not Found" class="image"/></td>
+                    <td scope="row">
+                        <a asp-controller="Product" asp-action="Details" asp-route-Id=@item.ProductId class="btn btn-outline-primary custom-btn" title="More Details About This Product">
+                            <img src="~/Styles/details.svg" alt="Not Found" class="icon" />
+                        </a>
+                        <br />
+                        <a asp-controller="Product" asp-action="Edit" asp-route-Id=@item.ProductId class="btn btn-outline-secondary custom-btn" title="Edit This Product">
+                            <img src="~/Styles/edit.svg" alt="Not Found" class="icon" />
+                        </a>
+                       <br />
+                        <a asp-controller="Product" asp-action="Delete" asp-route-Id=@item.ProductId class="btn btn-outline-danger custom-btn" title="Delete This Product">
+                            <img src="~/Styles/delete.svg" alt="Not Found" class="icon" />
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+
+    <tfoot>
+        <a asp-controller="Product" asp-action="Create" class="btn btn-outline-success custom-btn mb-3" title="Add New Product">
+            <img src="~/Styles/add.svg" alt="Not Found" class="add-icon" title="Add New Product" />
+        </a>
+    </tfoot>
+</table>

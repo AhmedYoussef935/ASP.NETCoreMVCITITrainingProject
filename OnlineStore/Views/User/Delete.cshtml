@@ -1,0 +1,20 @@
+﻿@model User
+<div class="d-flex justify-content-center mb-4">
+    <h2 class="text-success display-4 fw-bold">Delete User</h2>
+</div>
+
+
+<form asp-controller="User" asp-action="Delete" method="post" class="mt-3">
+    <input asp-for="UserId" value="@Model.UserId" hidden>
+    <input asp-for="Email" value="@Model.Email" class="form-control" hidden>
+    <input asp-for="FirstName" value="@Model.FirstName" class="form-control" hidden>
+    <input asp-for="LastName" value="@Model.LastName" class="form-control" hidden>
+    <input asp-for="Password" value="@Model.Password" class="form-control" hidden>
+    <p class="text-danger fs-3 text-center">
+        Are you sure to delete <span class="fw-bold">@Model.Email</span>?
+    </p>
+    <div class="d-flex justify-content-center mt-3 gap-4">
+        <input type="submit" value="Delete" class="btn btn-danger" title="Delete">
+        <a asp-controller="User" asp-action="Index" class="btn btn-secondary" title="Cancel">Cancel</a>
+    </div>
+</form>

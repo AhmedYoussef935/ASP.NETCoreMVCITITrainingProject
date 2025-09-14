@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Category>
+
+<div class="d-flex justify-content-center mb-4">
+    <h2 class="text-success fw-bold display-4">Brands Table</h2>
+</div>
+@if(TempData["DeleteMessage"] != null)
+{
+    <div class="d-flex justify-content-end">
+        <p class="alert alert-danger">@TempData["DeleteMessage"]</p>
+    </div>
+}
+
+
+<table class="table table-hover text-center align-middle fw-bold">
+    <thead class="fs-3">
+        <tr>
+            <th>@Html.DisplayNameFor(c => c.CategoryId)</th>
+            <th>@Html.DisplayNameFor(c => c.CategoryName)</th>
+            <th>@Html.DisplayNameFor(c => c.CategoryDescription)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody class="fs-5">
+        @foreach(var category in Model)
+        {
+            <tr>
+                <td>@category.CategoryId</td>
+                <td>@category.CategoryName</td>
+                <td>@category.CategoryDescription</td>
+                <td>
+                    <a asp-controller="Category" asp-action="Details" asp-route-id="@category.CategoryId" class="btn btn-outline-primary custom-btn" title="More Details About This Brand">
+                        <img src="~/Styles/details.svg" alt="Not Found" class="icon" />
+                    </a>
+                    <a asp-controller="Category" asp-action="Edit" asp-route-id="@category.CategoryId" class="btn btn-outline-secondary custom-btn" title="Edit The Info of This Brand">
+                        <img src="~/Styles/edit.svg" alt="Not Found" class="icon" />
+                    </a>
+                    <a asp-controller="Category" asp-action="Delete" asp-route-id="@category.CategoryId" class="btn btn-outline-danger custom-btn" title="Delete The Info of This Brand">
+                        <img src="~/Styles/delete.svg" alt="Not Found" class="icon" />
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <a asp-controller="Category" asp-action="Create" class="btn btn-outline-success custom-btn mb-3" title="Add New Brand">
+            <img src="~/Styles/add.svg" alt="Not Found" class="add-icon" />
+        </a>
+    </tfoot>
+</table>

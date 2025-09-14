@@ -1,0 +1,23 @@
+﻿@model Product
+
+<div class="d-flex justify-content-center mb-4">
+    <h2 class="text-success display-4 fw-bold">Delete Product</h2>
+</div>
+
+<form asp-controller="Product" asp-action="Delete" method="post" class=" fs-5">
+    <input asp-for="ProductId" value="@Model.ProductId" hidden>
+    <input asp-for="Title" value="@Model.Title" class="form-control" hidden>
+    <input asp-for="Description" value="@Model.Description" class="form-control" hidden>
+    <input asp-for="Price" value="@Model.Price" class="form-control" hidden>
+    <input asp-for="Quantity" value="@Model.Quantity" class="form-control" hidden>
+    <input asp-for="CategoryId" value="@Model.CategoryId" class="form-control" hidden>
+    <p class="text-danger fs-3 text-center">
+        Are you sure to delete <span class="fw-bold">@Model.Title</span>?
+    </p>
+    <div class="d-flex justify-content-center mt-3 gap-4">
+        <input type="submit" value="Delete" class="btn btn-danger" title="Delete">
+        <a asp-controller="Product" asp-action="Index" class="btn btn-secondary" title="Cancel">Cancel</a>
+    </div>
+</form>
+
+

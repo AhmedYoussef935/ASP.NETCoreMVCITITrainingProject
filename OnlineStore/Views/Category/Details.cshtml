@@ -1,0 +1,20 @@
+﻿@model Category
+
+<div class="d-flex justify-content-center mb-4">
+    <h2 class="text-success fw-bold display-4">Brand Details</h2>
+</div>
+<div class="d-flex justify-content-center">
+    <div class="card" style="width: 35rem">
+        <div class="card-body">
+            <h4 class="card-title text-center"><span class="fw-bold">@Model.CategoryName </span>Details</h4>
+            <div class="text-muted">
+                <h5 class="card-subtitle mb-2">@Html.DisplayNameFor(c => c.CategoryId):<span class="fw-bold"> @Model.CategoryId</span></h5>
+                <h5 class="card-subtitle mb-2">@Html.DisplayNameFor(c => c.CategoryName):<span class="fw-bold"> @Model.CategoryName</span></h5>
+                <h5 class="card-subtitle mb-2">@Html.DisplayNameFor(c => c.CategoryDescription):<span class="fw-bold"> @Model.CategoryDescription</span></h5>
+            </div>
+            <a asp-controller="Category" asp-action="Index" class="btn btn-outline-secondary custom-btn">
+                <img src="~/Styles/return icon.svg" alt="Not Found" class="icon" />
+            </a>
+        </div>
+    </div>
+</div>

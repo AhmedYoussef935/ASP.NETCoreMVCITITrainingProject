@@ -1,0 +1,44 @@
+﻿@model IEnumerable<User>
+
+
+<div class="d-flex justify-content-center mb-4">
+    <h2 class="text-success fw-bold display-4">Users Table</h2>
+</div>
+
+<table class="table table-hover text-center align-middle fw-bold">
+    <thead class="fs-3">
+    <tr>
+        <th scope="col">@Html.DisplayNameFor(u => u.UserId)</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">@Html.DisplayNameFor(u => u.Email)</th>
+        <th scope="col">Actions</th>
+    </tr>
+    </thead>
+    <tbody class="fs-5">
+        @foreach(var user in Model)
+        {
+            <tr>
+                <td scope="row">@user.UserId</td>
+                <td scope="row">@($"{user.FirstName} {user.LastName}")</td>
+                <td scope="row">@user.Email</td>
+                <td scope="row">
+                    <a asp-controller="User" asp-action="Details" asp-route-Id=@user.UserId class="btn btn-outline-primary custom-btn" title="More Details About This User">
+                        <img src="~/Styles/user more details icon.svg" alt="Not Found" class="icon" />
+                    </a>
+                    <a asp-controller="User" asp-action="Edit" asp-route-Id=@user.UserId class="btn btn-outline-secondary custom-btn" title="Edit The Info of This User">
+                        <img src="~/Styles/edit user icon.svg" alt="Not Found" class="icon" />
+                    </a>
+                    <a asp-controller="User" asp-action="Delete" asp-route-Id=@user.UserId class="btn btn-outline-danger custom-btn" title="Delete The Info of This User">
+                        <img src="~/Styles/delete user icon.svg" alt="Not Found" class="icon" />
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <a asp-controller="User" asp-action="Create" class="btn btn-outline-success custom-btn mb-3" title="Add New User">
+            <img src="~/Styles/add.svg" alt="Not Found" class="add-icon" />
+        </a>
+    </tfoot>
+</table>
+

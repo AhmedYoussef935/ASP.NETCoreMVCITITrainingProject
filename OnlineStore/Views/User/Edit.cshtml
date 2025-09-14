@@ -1,0 +1,34 @@
+﻿@model User
+<div class="d-flex justify-content-center mb-4">
+    <h2 class="text-success display-4 fw-bold">Edit User Info</h2>
+</div>
+
+<h3 class="text-muted display-6">Edit <span class="fw-bold">@Model.Email </span>Info</h3>
+
+<form asp-controller="User" asp-action="Edit" method="post">
+    <input asp-for="UserId" value="@Model.UserId" hidden>
+    <div class="form-group">
+        <label asp-for="Email" class="form-label fs-5 fw-bold"></label>
+        <input asp-for="Email" value="@Model.Email" class="form-control" readonly>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-3">
+        <label asp-for="FirstName" class="form-label fs-5 fw-bold"></label>
+        <input asp-for="FirstName" value="@Model.FirstName" class="form-control">
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-3">
+        <label asp-for="LastName" class="form-label fs-5 fw-bold"></label>
+        <input asp-for="LastName" value="@Model.LastName" class="form-control">
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-3">
+        <label asp-for="Password" class="form-label fs-5 fw-bold"></label>
+        <input asp-for="Password" value="@Model.Password" class="form-control">
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="d-flex justify-content-center mt-3 gap-4">
+        <input type="submit" value="Edit" class="btn btn-success" title="Edit">
+        <a asp-controller="User" asp-action="Index" class="btn btn-secondary" title="Cancel">Cancel</a>
+    </div>
+</form>

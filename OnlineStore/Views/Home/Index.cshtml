@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @if(ViewBag.UserName == "Guest")
+    {
+        <h1 class="display-3 fw-bold text-success">Welcome In Our Online Store</h1>
+        <a asp-controller="User" asp-action="Login" class="display-6 fw-bold link" style="color:black">
+            Log in to view the content
+            <img src="~/Styles/link.png" alt="Alternate Text" class="link-icon" />
+        </a>
+    }
+    else
+    {
+        <h1 class="display-3 fw-bold text-success">Welcome <span class="text-secondary">@ViewBag.UserName</span></h1>
+    }
+</div>
